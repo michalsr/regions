@@ -43,7 +43,7 @@ The relevant checkpoints need to be downloaded:
 - For Mobile-SAM(v1) go to the [Mobile-SAM repo](https://github.com/ChaoningZhang/MobileSAM/tree/master/weights).
 - For HQ-SAM, go to [HQ-SAM repo](https://github.com/SysCV/sam-hq#model-checkpoints).We also use `vit_h` for HQ-SAM. 
 
-The `generate_regions.py` is very similar to [SAM's amg.py] (https://github.com/facebookresearch/segment-anything/blob/main/scripts/amg.py). There are many hyper-parameters to choose from but we use the default ones. Whenever running `generate_regions.py`, the following arguments have to be provided: an input folder, output folder (to save SAM output) and checkpoint file. We save all SAM output in RLE format, which we use decode in `process_regions.py`
+The `generate_regions.py` is very similar to [SAM's amg.py](https://github.com/facebookresearch/segment-anything/blob/main/scripts/amg.py). There are many hyper-parameters to choose from but we use the default ones. Whenever running `generate_regions.py`, the following arguments have to be provided: an input folder, output folder (to save SAM output) and checkpoint file. We save all SAM output in RLE format, which we use decode in `process_regions.py`
 
 To run SAM ViT-H,
 ```
