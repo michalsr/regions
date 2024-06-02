@@ -262,14 +262,14 @@ if __name__ == '__main__':
         "--multiple",
         type=int,
         default=14,
-        help="The patch length of the model. Use 14 for DINOv2, 8 for DINOv1, 32 for CLIP, 14 for DenseCLIP (automatically handled in the package)"
+        help="The patch length of the model"
     )
     parser.add_argument(
         "--dtype",
         type=str,
         default='fp16',
         choices=['fp16', 'fp32','bf16'],
-        help="Which mixed precision to use. Use fp32 for clip and dense_clip"
+        help="Which mixed precision to use. Use fp32 for clip and Mask_CLIP"
     )
 
     args = parser.parse_args()

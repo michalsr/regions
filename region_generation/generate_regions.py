@@ -153,7 +153,7 @@ def get_sam_regions(args):
         sam_files = os.listdir(args.output)
         for f in sam_files:
             new_sam_regions = []
-            all_regions = utils.open_json_file(os.path.join(args.output,f))
+            all_regions = utils.open_file(os.path.join(args.output,f))
             for i,region in enumerate(all_regions):
                 image_id = f.replace('.json','')
                 region_id = f'{image_id}_region_{i}'

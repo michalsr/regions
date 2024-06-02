@@ -46,7 +46,7 @@ def region_features(args,image_id_to_sam):
         all_region_features_in_image = []
         sam_regions = image_id_to_sam[file_name.replace(ext,'')]
 
-        if args.pooling_method == 'downsample':
+        if args.interpolate == 'downsample':
             f1, h1, w1 = features[0].shape
 
             for region in sam_regions:
@@ -158,8 +158,16 @@ if __name__ == '__main__':
         "--pooling_method",
         type=str,
         default='average',
-        choices=['average', 'max', 'downsample'],
+        choices=['average', 'max'],
         help='pooling methods'
+    )
+
+    parser.add_argument(
+        "--interpolate",
+        type=str,
+        default='upsample',
+        choices=['upsample','downsample'],
+        help='interpolation'
     )
 
    
