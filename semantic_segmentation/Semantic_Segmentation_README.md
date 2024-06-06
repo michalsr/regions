@@ -15,7 +15,7 @@
   # Training 
 The following need to be defined for training:
 - `--train_region_labels_dir` and `--val_region_labels_dir`, which contain the generated region labels from the step above.
-- `--train_region_feature_dir` and `--val_region_feature_dir` which contain generated region features from the [Region Generation Folder](../region_generation/). 
+- `--train_region_feature_dir` and `--val_region_feature_dir` which contain generated region features from the [Region Feature Folder](../region_features/). 
 - `--save_dir` store the model output and results.
 - `--sam_dir` is the directory for generated **validation** regions (i.e. SAM val regions). This is used for evaluation.
 - `--annotation_dir` is the directory for **validation** annotations 
