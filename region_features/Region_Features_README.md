@@ -1,4 +1,4 @@
-# Region Generation 
+# Region Features
 - Directions for extracting features are under [Step 1: Feature Extraction](#step-1-feature-extraction)
 - Directions for generating regions are under [Step 2: Region Generation](#step-2-region-generation). [Part A](#part-a-different-versions-of-sam) describes running different versions of SAM. [Part B](#part-b-slic) describes directions for SLIC.
 - Directions for combining SAM masks and image features are under [Step 3: Process Regions](#step-3-process-regions)
