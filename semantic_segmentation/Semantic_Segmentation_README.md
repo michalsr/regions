@@ -3,7 +3,7 @@
 - Download PascalVOC from [here](http://host.robots.ox.ac.uk/pascal/VOC/voc2011/index.html#devkit). The original dataset does not separate training images and annotations into train/val but for training and eval the two are separated. The file `VOCdevkit/VOC2012/ImageSets/Segmentation` contains the train/val split. 
  
  # Generate region features
- - Follow the directions in [Region_Generation_README.md](../region_generation/Region_Generation_README.md) for extracting features, generating regions and processing regions. Note that some images in ADE20K take too much memory on an A40 during feature extraction. We skipped those images during training. 
+ - Follow the directions in [Region_Feature_README.md](../region_features/Region_Features_README.md) for extracting features, generating regions and processing regions. Note that some images in ADE20K take too much memory on an A40 during feature extraction. We skipped those images during training. 
  
  # Label Regions
  - Using generated regions and ground truth data, run `label_regions.py` for both training and validation sets. Assume that generated regions are in <REGION DIR>,  that region labels will be stored in <REGION LABELS>, and that original labels are in <ANNOTATION DIR>, run the following for the ADE dataset:
