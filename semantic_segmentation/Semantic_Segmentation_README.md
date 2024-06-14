@@ -30,8 +30,4 @@ To train on ADE with a linear backbone,
 ```
 python segmentation_training.py --train_region_labels_dir <TRAIN REGION LABELS> --val_region_labels_dir <VAL REGION LABELS> --epochs 16 --train_region_feature_dir <TRAIN REGION FEATURE DIR> --val_region_feature_dir <VAL REGION FEATURE DIR> --save_dir <SAVE DIR> --lr 5e-4 --sam_dir <SAM DIR> --annotation_dir <ANNOTATION DIR> --num_classes 150 --use_scheduler --t_max 30
 ```
-<<<<<<< Updated upstream
 The performance should be 52.8 mIOU.
-=======
-The performance should be 52.8 mIOU. 
->>>>>>> Stashed changes

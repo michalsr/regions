@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Region-Based Representations Revisited (CVPR 2024)
 
 Code for [Region-Based Representations Revisited](https://arxiv.org/abs/2402.02352) 
@@ -15,13 +14,9 @@ For a specific application, please click on the relevant folder.
 If you use this work or find it helpful, please consider citing: (bibtex)
 ```
 @inproceedings{regions,
-      author = {Michal Shlapentokh{-}Rothman*, and Blume*, Ansel and Xiao, Yao and Wu, Yuqun and TV, Sethuraman and Tao, Heyi and Lee, Jae Yong and Torres, Wilfredo and Wang, Yu-Xiong and Hoiem, Derek},
+      author = {Michal Shlapentokh{-}Rothman*, and Ansel Blume* and Yao Xiao and Yuqun Wu and Sethuraman TV and Heyi Tao and Jae Yong Lee and Wilfredo Torres and Yu-Xiong Wang and Derek Hoiem},
       title = {Region-Based Representations Revisited},
       booktitle = {Conference on Computer Vision and Pattern Recognition (CVPR)},
       year = {2024}
   }
 ```
-=======
-# Installation 
- 
->>>>>>> Stashed changes
