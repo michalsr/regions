@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
 # Region-Based Representations Revisited (CVPR 2024)
 
 Code for [Region-Based Representations Revisited](https://arxiv.org/abs/2402.02352) 
+
+# Installation
+`pip install -r requirements.txt`
+The `requirements.txt` uses PyTorch 1.13 and CUDA 11.3 but earlier versions should work as well. 
 
 To generate region features, please go to [Region_Features](region_features)
 
@@ -16,3 +21,7 @@ If you use this work or find it helpful, please consider citing: (bibtex)
       year = {2024}
   }
 ```
+=======
+# Installation 
+ 
+>>>>>>> Stashed changes

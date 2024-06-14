@@ -135,7 +135,11 @@ def train_model(args):
         model = torchvision.ops.MLP(in_channels=args.input_channels,hidden_channels=[args.hidden_channels,args.num_classes+1])
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,T_max=args.epochs)
+    if args.t_max == 0:
+        t_max = args.epochs 
+    else:
+        t_max = args.t_max 
+    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer,T_max=t_max)
     if args.ade:
         criterion = nn.CrossEntropyLoss(reduction='none',ignore_index=0)
     else:
@@ -206,7 +210,7 @@ def train_model(args):
 
         if (epoch+1)%args.iou_every==0:
             logger.info('Computing mIOU')
-            all_pixel_predictions, file_names = eval_model(args)
+            all_pixel_predictions, file_names = eval_model(args,model)
 
             miou = compute_iou(args,all_pixel_predictions,file_names,epoch)
             metrics['mean_iou'] = miou['mean_iou']
@@ -214,6 +218,7 @@ def train_model(args):
                 best_miou = miou['mean_iou']
                 torch.save(model.cpu().state_dict(),os.path.join(args.save_dir,'model_best.pt'))
         wandb.log(metrics)
+    return model 
 def compute_iou(args,predictions,file_names,epoch):
     actual_labels = []
     for file in tqdm(file_names):
@@ -243,13 +248,17 @@ def compute_iou(args,predictions,file_names,epoch):
     utils.save_file(os.path.join(args.save_dir,'results',f'mean_iou_epoch_{epoch}.json'),miou)
     return miou
 
-def eval_model(args):
+def load_model(args,model):
     if args.model == 'linear':
         model = torch.nn.Linear(args.input_channels, args.num_classes+1)
     else:
         model = torchvision.ops.MLP(in_channels=args.input_channels,hidden_channels=[args.hidden_channels,args.num_classes+1])
 
     model.load_state_dict(torch.load(os.path.join(args.save_dir,'model.pt')))
+    model.eval()
+    return model 
+
+def eval_model(args,model):
     model.eval()
     class_preds = []
     model = model.cuda()
@@ -354,9 +363,11 @@ def train_and_evaluate(args):
     if args.ade==True:
         logger.info('Training and evaluating on ADE.')
     if not args.eval_only:
-        train_model(args)
+        model = train_model(args)
+    else:
+        model = load_model(args)
 
-    all_pixel_predictions, file_names = eval_model(args)
+    all_pixel_predictions, file_names = eval_model(args,model)
 
     # Save pixel predictions as PNGs for use on evaluation server for Pascal VOC
     if args.output_predictions:
@@ -457,6 +468,7 @@ if __name__ == '__main__':
         default="avg_after_softmax",
         help="What to do for pixels in multiple regions. Default is average over probabilities after softmax"
     )
+ 
     parser.add_argument(
         "--model",
         type=str,
@@ -502,6 +514,12 @@ if __name__ == '__main__':
         '--use_scheduler',
         action='store_true',
         help='Whether to use scheduler'
+    )
+    parser.add_argument(
+        "--t_max",
+        type=int,
+        default=0,
+        help="T_max parameter for cosine scheduler. If 0, will use number of epochs"
     )
     parser.add_argument(
         '--ade',
