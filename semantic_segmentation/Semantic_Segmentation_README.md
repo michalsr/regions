@@ -10,7 +10,7 @@
  ```
  python label_regions.py --region_labels <REGION LABELS> --annotation_dir <ANNOTATION DIR> --sam_dir <REGION DIR> --num_classes 151
  ```
- For PascalVOC, the command is the same excep that `--num_classes` should be updated to 21.
+ For PascalVOC, the command is the same except that `--num_classes` should be updated to 21.
 
   # Training 
 The following need to be defined for training:
@@ -20,7 +20,7 @@ The following need to be defined for training:
 - `--sam_dir` is the directory for generated **validation** regions (i.e. SAM val regions). This is used for evaluation.
 - `--annotation_dir` is the directory for **validation** annotations 
 
-At the beginnig of training and evaluation, we load all of the data into memory by reading the data from all the fiels. There is the option to save the loaded data to a pkl file called `--train_data_file` and `--val_data_file`. 
+At the beginnig of training and evaluation, we load all of the data into memory by reading the data from all the files. There is the option to save the loaded data to a pkl file called `--train_data_file` and `--val_data_file`. 
 
 Currently, `segmentation_training.py` will throw an error if the number of classes is not equal to 150 or 21. 
 
